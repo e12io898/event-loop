@@ -27,7 +27,7 @@ class SwapiPeople(Base):
     gender: Mapped[str] = mapped_column(String(20))
     hair_color: Mapped[str] = mapped_column(String(20))
     height: Mapped[int] = mapped_column(Integer)
-    home_world: Mapped[str] = mapped_column(String)
+    homeworld: Mapped[str] = mapped_column(String)
     mass: Mapped[int] = mapped_column(Integer)
     name: Mapped[str] = mapped_column(String(50))
     skin_color: Mapped[str] = mapped_column(String(20))
@@ -38,4 +38,5 @@ class SwapiPeople(Base):
 
 async def init_db():
     async with engine.begin() as conn:
+        # await conn.run_sync(Base.metadata.drop_all)
         await conn.run_sync(Base.metadata.create_all)
