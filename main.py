@@ -16,6 +16,7 @@ async def internal_data(url_list, session):
     return ', '.join(string)
 
 
+# Получение необходимой информации о персонаже.
 async def get_person(id, session):
 
     try:
@@ -26,6 +27,7 @@ async def get_person(id, session):
         if response.status == 404:
             return
 
+        # Удаление лишних полей.
         del data['created']
         del data['edited']
         del data['url']
